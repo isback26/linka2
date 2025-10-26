@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Interaction {
+  id               String   @id @default(cuid())
+  prompt           String
+  answer           String
+  createdAt        DateTime @default(now())
+  latencyMs        Int
+  promptTokens     Int
+  completionTokens Int
+}
